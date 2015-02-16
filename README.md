@@ -49,10 +49,10 @@ be deployed to the web server.
    - **API Impersonate User** => `true (make sure the checkbox is checked)`
    - **SSO Adapter Class** => `com.kineticdata.request.authentication.GoogleOauthAuthenticator`
    - **SSO Adapter Properties** => `path/to/google-authenticator.properties`
-4. Place the oauthCallback.jsp file into a web-accessible location in <kinetic_request_deploy_directory> such as
-   <kinetic_request_deploy_directory>, or <kinetic_request_deploy_directory>/resources, or
-   <kinetic_request_deploy_directory>/themes/<your_theme_directory>/
-5. Configure the google-authenticator.properties file.
+4. Place the oauthCallback.jsp file into a web-accessible location in `<kinetic_request_deploy_directory>` such as
+   `<kinetic_request_deploy_directory>`, or `<kinetic_request_deploy_directory>/resources`, or
+   `<kinetic_request_deploy_directory>/themes/<your_theme_directory>/`
+5. Configure the `google-authenticator.properties` file.
 6. Restart the web server instance for the new files to be included.
 
 
