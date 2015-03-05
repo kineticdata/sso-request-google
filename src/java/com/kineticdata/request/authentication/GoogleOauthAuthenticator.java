@@ -137,6 +137,15 @@ public class GoogleOauthAuthenticator extends Authenticator {
                 logger.debug(this.getClass().getSimpleName()
                     + " - User is already authenticated: " + localUserContext.getUserName());
             }
+            if (localUserContext.isInRedirect()) {
+                // redirect to the destination url with the Remedy Login ID Parameter removed
+                if (isLoggingEnabled && logger.isDebugEnabled()) {
+                    logger.debug(this.getClass().getSimpleName()
+                            +" - Redirecting user to destination url: " + localUserContext.getFullRedirectURL());
+                }
+                doRedirect(localUserContext.getFullRedirectURL());
+                localUserContext.setInRedirect(false);
+            }
             authorized = true;
         
         //not authenticated yet
@@ -191,6 +200,7 @@ public class GoogleOauthAuthenticator extends Authenticator {
                             logger.debug(this.getClass().getSimpleName()
                                     +" - Redirecting user to destination url: " + localUserContext.getFullRedirectURL());
                         }
+                        getRequest().getSession(true).setAttribute("Google User Profile", jsonResponse);
                         doRedirect(localUserContext.getFullRedirectURL());
 
                     } else {
