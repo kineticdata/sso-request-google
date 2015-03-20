@@ -145,8 +145,10 @@ public class GoogleOauthAuthenticator extends Authenticator {
                 }
                 doRedirect(localUserContext.getFullRedirectURL());
                 localUserContext.setInRedirect(false);
+            } else {
+                authorized = true;
             }
-            authorized = true;
+            
         
         //not authenticated yet
         } else {
